@@ -3,30 +3,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Para Dome</title>
+  <title>Ramo de Girasoles para Dome</title>
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
 
-  <!-- GSAP CDN -->
+  <!-- GSAP -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
   <style>
-    * {
-      box-sizing: border-box;
+    body {
       margin: 0;
       padding: 0;
-    }
-
-    body {
       background: linear-gradient(to bottom, #fffaf0, #ffe4e1);
       font-family: 'Open Sans', sans-serif;
       display: flex;
       flex-direction: column;
       align-items: center;
       min-height: 100vh;
-      overflow: hidden;
-      position: relative;
+      overflow-x: hidden;
     }
 
     header {
@@ -41,8 +36,8 @@
     }
 
     header p {
-      color: #666;
-      font-size: 1.3rem;
+      color: #555;
+      font-size: 1.2rem;
       margin-top: 5px;
     }
 
@@ -55,58 +50,29 @@
       z-index: 10;
     }
 
-    /* Flower area */
-    .bouquet {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-top: 40px;
-      gap: 20px;
-    }
-
-    .sunflower {
-      width: 120px;
-      height: 200px;
+    /* Bouquet Wrapper */
+    .bouquet-wrapper {
       position: relative;
+      width: 400px;
+      height: 500px;
+      margin-top: 40px;
     }
 
-    .stem {
-      width: 10px;
-      height: 100px;
-      background: #4caf50;
+    .ribbon {
       position: absolute;
-      bottom: 0;
+      bottom: 50px;
       left: 50%;
       transform: translateX(-50%);
-      border-radius: 5px;
-    }
-
-    .leaf {
-      width: 20px;
-      height: 10px;
-      background: #388e3c;
-      position: absolute;
-      border-radius: 50%;
-    }
-
-    .leaf.left {
-      left: -15px;
-      bottom: 40px;
-      transform: rotate(-30deg);
-    }
-
-    .leaf.right {
-      right: -15px;
-      bottom: 60px;
-      transform: rotate(30deg);
-    }
-
-    /* SVG sunflower head */
-    svg {
       width: 100px;
-      height: 100px;
+      height: 40px;
+      background: #ff6b6b;
+      border-radius: 50px 50px 0 0;
+      z-index: 5;
+    }
+
+    svg {
       position: absolute;
-      top: 0;
+      bottom: 0;
       left: 50%;
       transform: translateX(-50%);
     }
@@ -153,63 +119,95 @@
 
   <header>
     <h1>Para Dome</h1>
-    <p>21 de Marzo</p>
+    <p>Un ramo de girasoles solo para ti</p>
   </header>
 
   <img class="heart" src="https://cdn-icons-png.flaticon.com/512/833/833472.png" alt="Corazón" id="heart"/>
 
-  <div class="bouquet">
-    <!-- Girasol 1 -->
-    <div class="sunflower">
-      <div class="stem"></div>
-      <div class="leaf left"></div>
-      <div class="leaf right"></div>
-      <svg viewBox="0 0 200 200">
-        <!-- Pétalos -->
-        <g id="petals">
-          <!-- 12 pétalos distribuidos -->
-          <ellipse cx="100" cy="30" rx="20" ry="40" fill="#FFEB3B" />
-          <ellipse cx="100" cy="170" rx="20" ry="40" fill="#FFEB3B" />
-          <ellipse cx="30" cy="100" rx="40" ry="20" fill="#FFEB3B" />
-          <ellipse cx="170" cy="100" rx="40" ry="20" fill="#FFEB3B" />
-          <ellipse cx="50" cy="50" rx="20" ry="40" transform="rotate(-45 50 50)" fill="#FFEB3B" />
-          <ellipse cx="150" cy="50" rx="20" ry="40" transform="rotate(45 150 50)" fill="#FFEB3B" />
-          <ellipse cx="50" cy="150" rx="20" ry="40" transform="rotate(45 50 150)" fill="#FFEB3B" />
-          <ellipse cx="150" cy="150" rx="20" ry="40" transform="rotate(-45 150 150)" fill="#FFEB3B" />
-        </g>
-        <!-- Centro -->
-        <circle cx="100" cy="100" r="40" fill="#6D4C41" />
-      </svg>
-    </div>
+  <div class="bouquet-wrapper">
+    <!-- Ramo de girasoles -->
+    <div class="ribbon"></div>
 
-    <!-- Puedes duplicar el bloque de girasol para más flores -->
-    <div class="sunflower">
-      <div class="stem"></div>
-      <div class="leaf left"></div>
-      <div class="leaf right"></div>
-      <svg viewBox="0 0 200 200">
-        <g id="petals">
-          <ellipse cx="100" cy="30" rx="20" ry="40" fill="#FFEB3B" />
-          <ellipse cx="100" cy="170" rx="20" ry="40" fill="#FFEB3B" />
-          <ellipse cx="30" cy="100" rx="40" ry="20" fill="#FFEB3B" />
-          <ellipse cx="170" cy="100" rx="40" ry="20" fill="#FFEB3B" />
-          <ellipse cx="50" cy="50" rx="20" ry="40" transform="rotate(-45 50 50)" fill="#FFEB3B" />
-          <ellipse cx="150" cy="50" rx="20" ry="40" transform="rotate(45 150 50)" fill="#FFEB3B" />
-          <ellipse cx="50" cy="150" rx="20" ry="40" transform="rotate(45 50 150)" fill="#FFEB3B" />
-          <ellipse cx="150" cy="150" rx="20" ry="40" transform="rotate(-45 150 150)" fill="#FFEB3B" />
+    <svg width="400" height="500" viewBox="0 0 400 500">
+      <!-- Tallos -->
+      <line x1="200" y1="250" x2="180" y2="500" stroke="#388e3c" stroke-width="6" />
+      <line x1="200" y1="250" x2="220" y2="500" stroke="#388e3c" stroke-width="6" />
+      <line x1="160" y1="300" x2="190" y2="500" stroke="#388e3c" stroke-width="6" />
+      <line x1="240" y1="300" x2="210" y2="500" stroke="#388e3c" stroke-width="6" />
+      
+      <!-- Girasol 1 -->
+      <g class="sunflower" transform="translate(200,250)">
+        <circle r="60" fill="#6D4C41" />
+        <!-- Pétalos capa trasera -->
+        <g>
+          <ellipse rx="15" ry="50" fill="#FFEB3B" transform="rotate(0) translate(0,-80)" />
+          <ellipse rx="15" ry="50" fill="#FFEB3B" transform="rotate(30) translate(0,-80)" />
+          <ellipse rx="15" ry="50" fill="#FFEB3B" transform="rotate(60) translate(0,-80)" />
+          <ellipse rx="15" ry="50" fill="#FFEB3B" transform="rotate(90) translate(0,-80)" />
+          <ellipse rx="15" ry="50" fill="#FFEB3B" transform="rotate(120) translate(0,-80)" />
+          <ellipse rx="15" ry="50" fill="#FFEB3B" transform="rotate(150) translate(0,-80)" />
         </g>
-        <circle cx="100" cy="100" r="40" fill="#6D4C41" />
-      </svg>
-    </div>
+        <!-- Pétalos capa delantera -->
+        <g>
+          <ellipse rx="12" ry="40" fill="#FDD835" transform="rotate(15) translate(0,-70)" />
+          <ellipse rx="12" ry="40" fill="#FDD835" transform="rotate(45) translate(0,-70)" />
+          <ellipse rx="12" ry="40" fill="#FDD835" transform="rotate(75) translate(0,-70)" />
+          <ellipse rx="12" ry="40" fill="#FDD835" transform="rotate(105) translate(0,-70)" />
+          <ellipse rx="12" ry="40" fill="#FDD835" transform="rotate(135) translate(0,-70)" />
+          <ellipse rx="12" ry="40" fill="#FDD835" transform="rotate(165) translate(0,-70)" />
+        </g>
+      </g>
 
-    <!-- Puedes seguir duplicando... -->
+      <!-- Girasol 2 -->
+      <g class="sunflower" transform="translate(160,300) scale(0.8)">
+        <circle r="60" fill="#6D4C41" />
+        <g>
+          <ellipse rx="15" ry="50" fill="#FFEB3B" transform="rotate(0) translate(0,-80)" />
+          <ellipse rx="15" ry="50" fill="#FFEB3B" transform="rotate(30) translate(0,-80)" />
+          <ellipse rx="15" ry="50" fill="#FFEB3B" transform="rotate(60) translate(0,-80)" />
+          <ellipse rx="15" ry="50" fill="#FFEB3B" transform="rotate(90) translate(0,-80)" />
+          <ellipse rx="15" ry="50" fill="#FFEB3B" transform="rotate(120) translate(0,-80)" />
+          <ellipse rx="15" ry="50" fill="#FFEB3B" transform="rotate(150) translate(0,-80)" />
+        </g>
+        <g>
+          <ellipse rx="12" ry="40" fill="#FDD835" transform="rotate(15) translate(0,-70)" />
+          <ellipse rx="12" ry="40" fill="#FDD835" transform="rotate(45) translate(0,-70)" />
+          <ellipse rx="12" ry="40" fill="#FDD835" transform="rotate(75) translate(0,-70)" />
+          <ellipse rx="12" ry="40" fill="#FDD835" transform="rotate(105) translate(0,-70)" />
+          <ellipse rx="12" ry="40" fill="#FDD835" transform="rotate(135) translate(0,-70)" />
+          <ellipse rx="12" ry="40" fill="#FDD835" transform="rotate(165) translate(0,-70)" />
+        </g>
+      </g>
+
+      <!-- Girasol 3 -->
+      <g class="sunflower" transform="translate(240,300) scale(0.9)">
+        <circle r="60" fill="#6D4C41" />
+        <g>
+          <ellipse rx="15" ry="50" fill="#FFEB3B" transform="rotate(0) translate(0,-80)" />
+          <ellipse rx="15" ry="50" fill="#FFEB3B" transform="rotate(30) translate(0,-80)" />
+          <ellipse rx="15" ry="50" fill="#FFEB3B" transform="rotate(60) translate(0,-80)" />
+          <ellipse rx="15" ry="50" fill="#FFEB3B" transform="rotate(90) translate(0,-80)" />
+          <ellipse rx="15" ry="50" fill="#FFEB3B" transform="rotate(120) translate(0,-80)" />
+          <ellipse rx="15" ry="50" fill="#FFEB3B" transform="rotate(150) translate(0,-80)" />
+        </g>
+        <g>
+          <ellipse rx="12" ry="40" fill="#FDD835" transform="rotate(15) translate(0,-70)" />
+          <ellipse rx="12" ry="40" fill="#FDD835" transform="rotate(45) translate(0,-70)" />
+          <ellipse rx="12" ry="40" fill="#FDD835" transform="rotate(75) translate(0,-70)" />
+          <ellipse rx="12" ry="40" fill="#FDD835" transform="rotate(105) translate(0,-70)" />
+          <ellipse rx="12" ry="40" fill="#FDD835" transform="rotate(135) translate(0,-70)" />
+          <ellipse rx="12" ry="40" fill="#FDD835" transform="rotate(165) translate(0,-70)" />
+        </g>
+      </g>
+
+    </svg>
   </div>
 
   <div class="message-card">
     <p><strong>Querida Dome,</strong></p>
-    <p>Un ramo de girasoles para celebrar el inicio de la primavera, tan radiantes como tú.</p>
-    <p>Flores para mi flor favorita, porque iluminas mis días con tu sonrisa.</p>
-    <div class="signature">Con cariño, Esteban</div>
+    <p>Hoy florecen los girasoles para ti, porque tú eres el sol que ilumina mis días.</p>
+    <p>Con amor, el ramo más especial.</p>
+    <div class="signature">Esteban</div>
   </div>
 
   <footer>
@@ -217,7 +215,7 @@
   </footer>
 
   <script>
-    // Heart beat animation with GSAP
+    // Heart beat animation
     gsap.to("#heart", {
       scale: 1.2,
       duration: 0.6,
@@ -226,11 +224,11 @@
       ease: "power1.inOut"
     });
 
-    // Make petals sway
-    gsap.to("#petals", {
+    // Wind movement to sunflowers
+    gsap.to(".sunflower", {
       rotate: 5,
       transformOrigin: "50% 50%",
-      duration: 2,
+      duration: 3,
       repeat: -1,
       yoyo: true,
       ease: "sine.inOut"
@@ -238,4 +236,4 @@
   </script>
 
 </body>
-  </html>
+            </html>

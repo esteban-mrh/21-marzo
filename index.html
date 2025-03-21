@@ -27,7 +27,7 @@
             color: #ff6b6b;
             font-size: 2.5rem;
             margin-bottom: 0;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
         }
         
         .date {
@@ -67,10 +67,10 @@
             transform: translateX(-50%);
             width: 140px;
             height: 180px;
-            background-color: #91cdf2;
+            background: linear-gradient(to bottom, #91cdf2, #5ca9d8);
             border-radius: 0 0 70px 70px;
             z-index: 1;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
         }
         
         .vase:before {
@@ -80,7 +80,7 @@
             left: -10px;
             right: -10px;
             height: 40px;
-            background-color: #91cdf2;
+            background: linear-gradient(to bottom, #91cdf2, #5ca9d8);
             border-radius: 50% 50% 0 0;
         }
         
@@ -100,18 +100,20 @@
             left: 50%;
             transform: translateX(-50%);
             z-index: 1;
+            box-shadow: 0 0 5px rgba(0,0,0,0.2);
         }
         
         .center {
             position: absolute;
             width: 30px;
             height: 30px;
-            background-color: #5e3915;
+            background: radial-gradient(circle, #5e3915 40%, #3b260d 100%);
             border-radius: 50%;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             z-index: 3;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
         }
         
         .petals {
@@ -126,12 +128,13 @@
             position: absolute;
             width: 25px;
             height: 40px;
-            background-color: #ffc830;
+            background: linear-gradient(to bottom, #ffc830, #ffb300);
             border-radius: 50% 50% 50% 50%;
             top: 50%;
             left: 50%;
             transform-origin: center bottom;
             z-index: 2;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
         }
         
         .leaf {
@@ -141,6 +144,7 @@
             background-color: #5a9e45;
             border-radius: 50% 50% 50% 50%;
             z-index: 1;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
         }
         
         .message {
@@ -178,7 +182,7 @@
             position: absolute;
             width: 15px;
             height: 25px;
-            background-color: #ffc830;
+            background: linear-gradient(to bottom, #ffc830, #ffb300);
             border-radius: 50%;
             opacity: 0.8;
             pointer-events: none;
@@ -218,7 +222,10 @@
     
     <div class="bouquet-container">
         <svg class="heart" viewBox="0 0 24 24" fill="#ff6b6b">
-            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 
+                     2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 
+                     14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 
+                     11.54L12 21.35z"/>
         </svg>
         
         <div class="vase"></div>
@@ -237,10 +244,8 @@
     
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Create sunflowers
             const container = document.getElementById('sunflowers-container');
             
-            // Define positions for each sunflower
             const positions = [
                 { x: -80, y: 320, size: 0.9, rotation: -15 },
                 { x: -40, y: 340, size: 1.0, rotation: -5 },
@@ -252,15 +257,12 @@
                 { x: 60, y: 280, size: 0.85, rotation: 10 }
             ];
             
-            // Create each sunflower
             positions.forEach(pos => {
                 createSunflower(pos.x, pos.y, pos.size, pos.rotation);
             });
             
-            // Create falling petals
             createFallingPetals();
             
-            // Add a gentle sway animation to the bouquet
             const sunflowersContainer = document.getElementById('sunflowers-container');
             let angle = 0;
             let direction = 1;
@@ -273,9 +275,7 @@
                 sunflowersContainer.style.transform = `rotate(${angle}deg)`;
             }, 50);
             
-            // Functions
             function createSunflower(xPos, yPos, size, rotation) {
-                // Create main container
                 const sunflowerGroup = document.createElement('div');
                 sunflowerGroup.style.position = 'absolute';
                 sunflowerGroup.style.left = `calc(50% + ${xPos}px)`;
@@ -283,12 +283,10 @@
                 sunflowerGroup.style.transform = `scale(${size}) rotate(${rotation}deg)`;
                 sunflowerGroup.style.transformOrigin = 'bottom center';
                 
-                // Create stem
                 const stem = document.createElement('div');
                 stem.className = 'stem';
                 sunflowerGroup.appendChild(stem);
                 
-                // Add leaves to stem
                 const leaf1 = document.createElement('div');
                 leaf1.className = 'leaf';
                 leaf1.style.bottom = '100px';
@@ -303,18 +301,16 @@
                 leaf2.style.transform = 'rotate(20deg) scaleX(-1)';
                 sunflowerGroup.appendChild(leaf2);
                 
-                // Create flower
                 const flower = document.createElement('div');
                 flower.className = 'sunflower';
                 flower.style.bottom = '180px';
                 flower.style.left = '50%';
                 flower.style.transform = 'translateX(-50%)';
+                flower.style.zIndex = '2';
                 
-                // Create petals group
                 const petalsGroup = document.createElement('div');
                 petalsGroup.className = 'petals';
                 
-                // Create petals
                 for (let i = 0; i < 18; i++) {
                     const petal = document.createElement('div');
                     petal.className = 'petal';
@@ -325,7 +321,6 @@
                 
                 flower.appendChild(petalsGroup);
                 
-                // Create center of flower
                 const center = document.createElement('div');
                 center.className = 'center';
                 flower.appendChild(center);
@@ -341,7 +336,6 @@
                     const petal = document.createElement('div');
                     petal.className = 'petal-falling';
                     
-                    // Random properties
                     const left = Math.random() * 100;
                     const delay = Math.random() * 5;
                     const duration = Math.random() * 10 + 5;

@@ -10,7 +10,7 @@
 
   <!-- GSAP for animations -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-<link href="style.css" rel="stylesheet" />
+  <link href="style.css" rel="stylesheet" />
 
 </head>
 <body>
@@ -25,6 +25,28 @@
       <title id="bouquetTitle">Ramo de Girasoles</title>
       <desc id="bouquetDesc">Un hermoso ramo de girasoles con tallos y hojas.</desc>
       
+      <!-- Definiciones de filtros para sombras -->
+      <defs>
+        <!-- Sombra para pétalos -->
+        <filter id="petalShadow" x="-20%" y="-20%" width="140%" height="140%">
+          <feDropShadow dx="2" dy="2" stdDeviation="3" flood-color="#d4a304" flood-opacity="0.6"/>
+        </filter>
+        
+        <!-- Sombra para centro del girasol -->
+        <filter id="centerShadow" x="-20%" y="-20%" width="140%" height="140%">
+          <feDropShadow dx="2" dy="2" stdDeviation="2" flood-color="#3e2723" flood-opacity="0.5"/>
+        </filter>
+        
+        <!-- Efecto de profundidad para los girasoles -->
+        <filter id="sunflowerDepth">
+          <feGaussianBlur in="SourceAlpha" stdDeviation="3" result="blur"/>
+          <feOffset in="blur" dx="4" dy="4" result="offsetBlur"/>
+          <feFlood flood-color="#754c24" flood-opacity="0.5" result="floodFill"/>
+          <feComposite in="floodFill" in2="offsetBlur" operator="in" result="coloredShadow"/>
+          <feComposite in="SourceGraphic" in2="coloredShadow" operator="over"/>
+        </filter>
+      </defs>
+      
       <!-- Tallos -->
       <g stroke="#388e3c" stroke-width="8" fill="none">
         <line x1="200" y1="300" x2="180" y2="580" />
@@ -36,95 +58,95 @@
 
       <!-- Hojas -->
       <g fill="#4caf50">
-        <ellipse cx="180" cy="400" rx="30" ry="15" transform="rotate(-30 180 400)" />
-        <ellipse cx="220" cy="420" rx="30" ry="15" transform="rotate(30 220 420)" />
-        <ellipse cx="150" cy="450" rx="25" ry="12" transform="rotate(-40 150 450)" />
-        <ellipse cx="250" cy="460" rx="25" ry="12" transform="rotate(40 250 460)" />
+        <ellipse cx="180" cy="400" rx="30" ry="15" transform="rotate(-30 180 400)" filter="url(#petalShadow)" />
+        <ellipse cx="220" cy="420" rx="30" ry="15" transform="rotate(30 220 420)" filter="url(#petalShadow)" />
+        <ellipse cx="150" cy="450" rx="25" ry="12" transform="rotate(-40 150 450)" filter="url(#petalShadow)" />
+        <ellipse cx="250" cy="460" rx="25" ry="12" transform="rotate(40 250 460)" filter="url(#petalShadow)" />
       </g>
 
-       <!-- Girasol 1 (principal) -->
-<g class="sunflower" transform="translate(200,300)">
-  <g class="sunflower-petals">
-    <circle r="70" fill="#ffeb3b" />
-    <g>
-      <!-- Primera mitad de los pétalos (0-150 grados) -->
-      <ellipse rx="20" ry="60" fill="#fbc02d" transform="rotate(0) translate(0,-90)" />
-      <ellipse rx="20" ry="60" fill="#fbc02d" transform="rotate(30) translate(0,-90)" />
-      <ellipse rx="20" ry="60" fill="#fbc02d" transform="rotate(60) translate(0,-90)" />
-      <ellipse rx="20" ry="60" fill="#fbc02d" transform="rotate(90) translate(0,-90)" />
-      <ellipse rx="20" ry="60" fill="#fbc02d" transform="rotate(120) translate(0,-90)" />
-      <ellipse rx="20" ry="60" fill="#fbc02d" transform="rotate(150) translate(0,-90)" />
-      
-      <!-- Segunda mitad de los pétalos (180-330 grados) -->
-      <ellipse rx="20" ry="60" fill="#fbc02d" transform="rotate(180) translate(0,-90)" />
-      <ellipse rx="20" ry="60" fill="#fbc02d" transform="rotate(210) translate(0,-90)" />
-      <ellipse rx="20" ry="60" fill="#fbc02d" transform="rotate(240) translate(0,-90)" />
-      <ellipse rx="20" ry="60" fill="#fbc02d" transform="rotate(270) translate(0,-90)" />
-      <ellipse rx="20" ry="60" fill="#fbc02d" transform="rotate(300) translate(0,-90)" />
-      <ellipse rx="20" ry="60" fill="#fbc02d" transform="rotate(330) translate(0,-90)" />
-    </g>
-  </g>
-  <circle r="40" fill="#5d4037" />
-  <circle r="5" fill="#3e2723" />
-</g>
+      <!-- Girasol 1 (principal) -->
+      <g class="sunflower" transform="translate(200,300)" filter="url(#sunflowerDepth)">
+        <g class="sunflower-petals">
+          <circle r="70" fill="#ffeb3b" />
+          <g>
+            <!-- Primera mitad de los pétalos (0-150 grados) -->
+            <ellipse rx="20" ry="60" fill="#fbc02d" transform="rotate(0) translate(0,-90)" filter="url(#petalShadow)" />
+            <ellipse rx="20" ry="60" fill="#fbc02d" transform="rotate(30) translate(0,-90)" filter="url(#petalShadow)" />
+            <ellipse rx="20" ry="60" fill="#fbc02d" transform="rotate(60) translate(0,-90)" filter="url(#petalShadow)" />
+            <ellipse rx="20" ry="60" fill="#fbc02d" transform="rotate(90) translate(0,-90)" filter="url(#petalShadow)" />
+            <ellipse rx="20" ry="60" fill="#fbc02d" transform="rotate(120) translate(0,-90)" filter="url(#petalShadow)" />
+            <ellipse rx="20" ry="60" fill="#fbc02d" transform="rotate(150) translate(0,-90)" filter="url(#petalShadow)" />
+            
+            <!-- Segunda mitad de los pétalos (180-330 grados) -->
+            <ellipse rx="20" ry="60" fill="#fbc02d" transform="rotate(180) translate(0,-90)" filter="url(#petalShadow)" />
+            <ellipse rx="20" ry="60" fill="#fbc02d" transform="rotate(210) translate(0,-90)" filter="url(#petalShadow)" />
+            <ellipse rx="20" ry="60" fill="#fbc02d" transform="rotate(240) translate(0,-90)" filter="url(#petalShadow)" />
+            <ellipse rx="20" ry="60" fill="#fbc02d" transform="rotate(270) translate(0,-90)" filter="url(#petalShadow)" />
+            <ellipse rx="20" ry="60" fill="#fbc02d" transform="rotate(300) translate(0,-90)" filter="url(#petalShadow)" />
+            <ellipse rx="20" ry="60" fill="#fbc02d" transform="rotate(330) translate(0,-90)" filter="url(#petalShadow)" />
+          </g>
+        </g>
+        <circle r="40" fill="#5d4037" filter="url(#centerShadow)" />
+        <circle r="5" fill="#3e2723" />
+      </g>
 
-<!-- Girasol 2 -->
-<g class="sunflower" transform="translate(160,340) scale(0.9)">
-  <g class="sunflower-petals">
-    <circle r="70" fill="#ffeb3b" />
-    <g>
-      <!-- Primera mitad de los pétalos (0-150 grados) -->
-      <ellipse rx="20" ry="60" fill="#fbc02d" transform="rotate(0) translate(0,-90)" />
-      <ellipse rx="20" ry="60" fill="#fbc02d" transform="rotate(30) translate(0,-90)" />
-      <ellipse rx="20" ry="60" fill="#fbc02d" transform="rotate(60) translate(0,-90)" />
-      <ellipse rx="20" ry="60" fill="#fbc02d" transform="rotate(90) translate(0,-90)" />
-      <ellipse rx="20" ry="60" fill="#fbc02d" transform="rotate(120) translate(0,-90)" />
-      <ellipse rx="20" ry="60" fill="#fbc02d" transform="rotate(150) translate(0,-90)" />
-      
-      <!-- Segunda mitad de los pétalos (180-330 grados) -->
-      <ellipse rx="20" ry="60" fill="#fbc02d" transform="rotate(180) translate(0,-90)" />
-      <ellipse rx="20" ry="60" fill="#fbc02d" transform="rotate(210) translate(0,-90)" />
-      <ellipse rx="20" ry="60" fill="#fbc02d" transform="rotate(240) translate(0,-90)" />
-      <ellipse rx="20" ry="60" fill="#fbc02d" transform="rotate(270) translate(0,-90)" />
-      <ellipse rx="20" ry="60" fill="#fbc02d" transform="rotate(300) translate(0,-90)" />
-      <ellipse rx="20" ry="60" fill="#fbc02d" transform="rotate(330) translate(0,-90)" />
-    </g>
-  </g>
-  <circle r="40" fill="#5d4037" />
-  <circle r="5" fill="#3e2723" />
-</g>
+      <!-- Girasol 2 -->
+      <g class="sunflower" transform="translate(160,340) scale(0.9)" filter="url(#sunflowerDepth)">
+        <g class="sunflower-petals">
+          <circle r="70" fill="#ffeb3b" />
+          <g>
+            <!-- Primera mitad de los pétalos (0-150 grados) -->
+            <ellipse rx="20" ry="60" fill="#fbc02d" transform="rotate(0) translate(0,-90)" filter="url(#petalShadow)" />
+            <ellipse rx="20" ry="60" fill="#fbc02d" transform="rotate(30) translate(0,-90)" filter="url(#petalShadow)" />
+            <ellipse rx="20" ry="60" fill="#fbc02d" transform="rotate(60) translate(0,-90)" filter="url(#petalShadow)" />
+            <ellipse rx="20" ry="60" fill="#fbc02d" transform="rotate(90) translate(0,-90)" filter="url(#petalShadow)" />
+            <ellipse rx="20" ry="60" fill="#fbc02d" transform="rotate(120) translate(0,-90)" filter="url(#petalShadow)" />
+            <ellipse rx="20" ry="60" fill="#fbc02d" transform="rotate(150) translate(0,-90)" filter="url(#petalShadow)" />
+            
+            <!-- Segunda mitad de los pétalos (180-330 grados) -->
+            <ellipse rx="20" ry="60" fill="#fbc02d" transform="rotate(180) translate(0,-90)" filter="url(#petalShadow)" />
+            <ellipse rx="20" ry="60" fill="#fbc02d" transform="rotate(210) translate(0,-90)" filter="url(#petalShadow)" />
+            <ellipse rx="20" ry="60" fill="#fbc02d" transform="rotate(240) translate(0,-90)" filter="url(#petalShadow)" />
+            <ellipse rx="20" ry="60" fill="#fbc02d" transform="rotate(270) translate(0,-90)" filter="url(#petalShadow)" />
+            <ellipse rx="20" ry="60" fill="#fbc02d" transform="rotate(300) translate(0,-90)" filter="url(#petalShadow)" />
+            <ellipse rx="20" ry="60" fill="#fbc02d" transform="rotate(330) translate(0,-90)" filter="url(#petalShadow)" />
+          </g>
+        </g>
+        <circle r="40" fill="#5d4037" filter="url(#centerShadow)" />
+        <circle r="5" fill="#3e2723" />
+      </g>
 
-<!-- Girasol 3 -->
-<g class="sunflower" transform="translate(240,340) scale(0.85)">
-  <g class="sunflower-petals">
-    <circle r="70" fill="#ffeb3b" />
-    <g>
-      <!-- Primera mitad de los pétalos (0-150 grados) -->
-      <ellipse rx="20" ry="60" fill="#fbc02d" transform="rotate(0) translate(0,-90)" />
-      <ellipse rx="20" ry="60" fill="#fbc02d" transform="rotate(30) translate(0,-90)" />
-      <ellipse rx="20" ry="60" fill="#fbc02d" transform="rotate(60) translate(0,-90)" />
-      <ellipse rx="20" ry="60" fill="#fbc02d" transform="rotate(90) translate(0,-90)" />
-      <ellipse rx="20" ry="60" fill="#fbc02d" transform="rotate(120) translate(0,-90)" />
-      <ellipse rx="20" ry="60" fill="#fbc02d" transform="rotate(150) translate(0,-90)" />
-      
-      <!-- Segunda mitad de los pétalos (180-330 grados) -->
-      <ellipse rx="20" ry="60" fill="#fbc02d" transform="rotate(180) translate(0,-90)" />
-      <ellipse rx="20" ry="60" fill="#fbc02d" transform="rotate(210) translate(0,-90)" />
-      <ellipse rx="20" ry="60" fill="#fbc02d" transform="rotate(240) translate(0,-90)" />
-      <ellipse rx="20" ry="60" fill="#fbc02d" transform="rotate(270) translate(0,-90)" />
-      <ellipse rx="20" ry="60" fill="#fbc02d" transform="rotate(300) translate(0,-90)" />
-      <ellipse rx="20" ry="60" fill="#fbc02d" transform="rotate(330) translate(0,-90)" />
-    </g>
-  </g>
-  <circle r="40" fill="#5d4037" />
-  <circle r="5" fill="#3e2723" />
-</g>
+      <!-- Girasol 3 -->
+      <g class="sunflower" transform="translate(240,340) scale(0.85)" filter="url(#sunflowerDepth)">
+        <g class="sunflower-petals">
+          <circle r="70" fill="#ffeb3b" />
+          <g>
+            <!-- Primera mitad de los pétalos (0-150 grados) -->
+            <ellipse rx="20" ry="60" fill="#fbc02d" transform="rotate(0) translate(0,-90)" filter="url(#petalShadow)" />
+            <ellipse rx="20" ry="60" fill="#fbc02d" transform="rotate(30) translate(0,-90)" filter="url(#petalShadow)" />
+            <ellipse rx="20" ry="60" fill="#fbc02d" transform="rotate(60) translate(0,-90)" filter="url(#petalShadow)" />
+            <ellipse rx="20" ry="60" fill="#fbc02d" transform="rotate(90) translate(0,-90)" filter="url(#petalShadow)" />
+            <ellipse rx="20" ry="60" fill="#fbc02d" transform="rotate(120) translate(0,-90)" filter="url(#petalShadow)" />
+            <ellipse rx="20" ry="60" fill="#fbc02d" transform="rotate(150) translate(0,-90)" filter="url(#petalShadow)" />
+            
+            <!-- Segunda mitad de los pétalos (180-330 grados) -->
+            <ellipse rx="20" ry="60" fill="#fbc02d" transform="rotate(180) translate(0,-90)" filter="url(#petalShadow)" />
+            <ellipse rx="20" ry="60" fill="#fbc02d" transform="rotate(210) translate(0,-90)" filter="url(#petalShadow)" />
+            <ellipse rx="20" ry="60" fill="#fbc02d" transform="rotate(240) translate(0,-90)" filter="url(#petalShadow)" />
+            <ellipse rx="20" ry="60" fill="#fbc02d" transform="rotate(270) translate(0,-90)" filter="url(#petalShadow)" />
+            <ellipse rx="20" ry="60" fill="#fbc02d" transform="rotate(300) translate(0,-90)" filter="url(#petalShadow)" />
+            <ellipse rx="20" ry="60" fill="#fbc02d" transform="rotate(330) translate(0,-90)" filter="url(#petalShadow)" />
+          </g>
+        </g>
+        <circle r="40" fill="#5d4037" filter="url(#centerShadow)" />
+        <circle r="5" fill="#3e2723" />
+      </g>
+
       <!-- Lazo del ramo -->
       <g>
         <ellipse cx="200" cy="580" rx="60" ry="20" fill="#ff6f61" />
         <path d="M 140 580 Q 200 620 260 580 Q 200 600 140 580" fill="#ff8a65" />
       </g>
-
     </svg>
   </div>
 
@@ -139,7 +161,16 @@
     esteban-mrh .github.io
   </footer>
 
-  <script src="script.js">
+  <script>
+    // Animación de los girasoles como si el viento soplara
+    gsap.to(".sunflower", {
+      rotation: 3,  // Cambiamos rotate por rotation
+      transformOrigin: "bottom center",  // Cambiamos el origen para que gire desde abajo
+      duration: 4,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut"
+    });
   </script>
 </body>
-              </html>
+</html>

@@ -4,132 +4,136 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Para Dome</title>
-  
+
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
 
+  <!-- GSAP CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
   <style>
-    /* RESET */
     * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
     }
 
     body {
-      font-family: 'Open Sans', sans-serif;
       background: linear-gradient(to bottom, #fffaf0, #ffe4e1);
-      color: #333;
+      font-family: 'Open Sans', sans-serif;
       display: flex;
       flex-direction: column;
       align-items: center;
       min-height: 100vh;
-      overflow-x: hidden;
+      overflow: hidden;
+      position: relative;
     }
 
     header {
       text-align: center;
-      margin-top: 50px;
+      margin-top: 40px;
     }
 
     header h1 {
       font-family: 'Pacifico', cursive;
-      font-size: 3rem;
       color: #ff6b6b;
-      text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+      font-size: 3rem;
     }
 
     header p {
-      font-size: 1.3rem;
       color: #666;
+      font-size: 1.3rem;
+      margin-top: 5px;
     }
 
-    /* Heart Animation */
+    /* Heart */
     .heart {
       position: absolute;
-      top: 20px;
-      right: 20px;
+      top: 30px;
+      right: 30px;
       width: 50px;
-      animation: heartbeat 1.5s infinite;
+      z-index: 10;
     }
 
-    @keyframes heartbeat {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.2); }
-      100% { transform: scale(1); }
-    }
-
-    /* Flowers Container */
-    .flower-container {
-      position: relative;
-      margin: 60px 0;
-      width: 100%;
-      max-width: 400px;
+    /* Flower area */
+    .bouquet {
       display: flex;
-      flex-wrap: wrap;
       justify-content: center;
-      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 40px;
+      gap: 20px;
     }
 
-    .flower {
-      width: 80px;
-      height: 80px;
-      background: radial-gradient(circle, #ffeb3b 60%, #795548 61%);
-      border-radius: 50%;
+    .sunflower {
+      width: 120px;
+      height: 200px;
       position: relative;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      animation: float 6s ease-in-out infinite;
     }
 
-    .flower::before, .flower::after {
-      content: '';
-      position: absolute;
-      background-color: #4caf50;
+    .stem {
       width: 10px;
       height: 100px;
-      bottom: -100px;
+      background: #4caf50;
+      position: absolute;
+      bottom: 0;
       left: 50%;
       transform: translateX(-50%);
       border-radius: 5px;
     }
 
-    .flower::after {
-      width: 15px;
-      height: 15px;
-      bottom: -110px;
-      background-color: #388e3c;
+    .leaf {
+      width: 20px;
+      height: 10px;
+      background: #388e3c;
+      position: absolute;
       border-radius: 50%;
     }
 
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
+    .leaf.left {
+      left: -15px;
+      bottom: 40px;
+      transform: rotate(-30deg);
+    }
+
+    .leaf.right {
+      right: -15px;
+      bottom: 60px;
+      transform: rotate(30deg);
+    }
+
+    /* SVG sunflower head */
+    svg {
+      width: 100px;
+      height: 100px;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
     }
 
     /* Message Card */
     .message-card {
-      background-color: #fff;
+      background: #fff;
+      margin: 40px 20px;
       padding: 30px 20px;
-      margin: 20px;
       border-radius: 15px;
       max-width: 500px;
       width: 90%;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
       text-align: center;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
       animation: fadeIn 2s ease-in;
     }
 
     .message-card p {
       font-size: 1.2rem;
-      color: #444;
       margin-bottom: 15px;
+      color: #444;
     }
 
     .signature {
-      margin-top: 20px;
       font-family: 'Pacifico', cursive;
-      color: #ff6b6b;
       font-size: 1.5rem;
+      color: #ff6b6b;
     }
 
     @keyframes fadeIn {
@@ -138,7 +142,6 @@
     }
 
     footer {
-      margin-top: auto;
       font-size: 0.9rem;
       color: #aaa;
       padding: 10px;
@@ -153,17 +156,54 @@
     <p>21 de Marzo</p>
   </header>
 
-  <img class="heart" src="https://cdn-icons-png.flaticon.com/512/833/833472.png" alt="Corazón latiendo">
+  <img class="heart" src="https://cdn-icons-png.flaticon.com/512/833/833472.png" alt="Corazón" id="heart"/>
 
-  <section class="flower-container">
-    <!-- Puedes duplicar la flor para crear más -->
-    <div class="flower" style="animation-delay: 0s;"></div>
-    <div class="flower" style="animation-delay: 0.5s;"></div>
-    <div class="flower" style="animation-delay: 1s;"></div>
-    <div class="flower" style="animation-delay: 1.5s;"></div>
-    <div class="flower" style="animation-delay: 2s;"></div>
-    <div class="flower" style="animation-delay: 2.5s;"></div>
-  </section>
+  <div class="bouquet">
+    <!-- Girasol 1 -->
+    <div class="sunflower">
+      <div class="stem"></div>
+      <div class="leaf left"></div>
+      <div class="leaf right"></div>
+      <svg viewBox="0 0 200 200">
+        <!-- Pétalos -->
+        <g id="petals">
+          <!-- 12 pétalos distribuidos -->
+          <ellipse cx="100" cy="30" rx="20" ry="40" fill="#FFEB3B" />
+          <ellipse cx="100" cy="170" rx="20" ry="40" fill="#FFEB3B" />
+          <ellipse cx="30" cy="100" rx="40" ry="20" fill="#FFEB3B" />
+          <ellipse cx="170" cy="100" rx="40" ry="20" fill="#FFEB3B" />
+          <ellipse cx="50" cy="50" rx="20" ry="40" transform="rotate(-45 50 50)" fill="#FFEB3B" />
+          <ellipse cx="150" cy="50" rx="20" ry="40" transform="rotate(45 150 50)" fill="#FFEB3B" />
+          <ellipse cx="50" cy="150" rx="20" ry="40" transform="rotate(45 50 150)" fill="#FFEB3B" />
+          <ellipse cx="150" cy="150" rx="20" ry="40" transform="rotate(-45 150 150)" fill="#FFEB3B" />
+        </g>
+        <!-- Centro -->
+        <circle cx="100" cy="100" r="40" fill="#6D4C41" />
+      </svg>
+    </div>
+
+    <!-- Puedes duplicar el bloque de girasol para más flores -->
+    <div class="sunflower">
+      <div class="stem"></div>
+      <div class="leaf left"></div>
+      <div class="leaf right"></div>
+      <svg viewBox="0 0 200 200">
+        <g id="petals">
+          <ellipse cx="100" cy="30" rx="20" ry="40" fill="#FFEB3B" />
+          <ellipse cx="100" cy="170" rx="20" ry="40" fill="#FFEB3B" />
+          <ellipse cx="30" cy="100" rx="40" ry="20" fill="#FFEB3B" />
+          <ellipse cx="170" cy="100" rx="40" ry="20" fill="#FFEB3B" />
+          <ellipse cx="50" cy="50" rx="20" ry="40" transform="rotate(-45 50 50)" fill="#FFEB3B" />
+          <ellipse cx="150" cy="50" rx="20" ry="40" transform="rotate(45 150 50)" fill="#FFEB3B" />
+          <ellipse cx="50" cy="150" rx="20" ry="40" transform="rotate(45 50 150)" fill="#FFEB3B" />
+          <ellipse cx="150" cy="150" rx="20" ry="40" transform="rotate(-45 150 150)" fill="#FFEB3B" />
+        </g>
+        <circle cx="100" cy="100" r="40" fill="#6D4C41" />
+      </svg>
+    </div>
+
+    <!-- Puedes seguir duplicando... -->
+  </div>
 
   <div class="message-card">
     <p><strong>Querida Dome,</strong></p>
@@ -175,6 +215,27 @@
   <footer>
     esteban-mrh.github.io
   </footer>
+
+  <script>
+    // Heart beat animation with GSAP
+    gsap.to("#heart", {
+      scale: 1.2,
+      duration: 0.6,
+      repeat: -1,
+      yoyo: true,
+      ease: "power1.inOut"
+    });
+
+    // Make petals sway
+    gsap.to("#petals", {
+      rotate: 5,
+      transformOrigin: "50% 50%",
+      duration: 2,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut"
+    });
+  </script>
 
 </body>
   </html>

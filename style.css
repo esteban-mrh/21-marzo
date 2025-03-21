@@ -70,12 +70,12 @@ body {
       to { opacity: 1; transform: translateY(0); }
     }
 
-    @keyframes sway {
+    /* Eliminamos esta animación CSS para evitar conflictos con GSAP */
+    /* @keyframes sway {
       0%, 100% { transform: rotate(0); }
       50% { transform: rotate(5deg); }
     }
 
     .sunflower {
       animation: sway 3s ease-in-out infinite;
-    }
-
+    } */

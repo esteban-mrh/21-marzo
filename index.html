@@ -1,116 +1,180 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Para Dome</title>
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+
   <style>
-    body {
+    /* RESET */
+    * {
       margin: 0;
-      font-family: 'Arial', sans-serif;
-      background-color: #fdfdfd;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background: linear-gradient(to bottom, #fffaf0, #ffe4e1);
       color: #333;
-      text-align: center;
       display: flex;
       flex-direction: column;
+      align-items: center;
       min-height: 100vh;
+      overflow-x: hidden;
     }
 
     header {
-      padding: 2rem 1rem 1rem;
+      text-align: center;
+      margin-top: 50px;
     }
 
-    h1 {
+    header h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: 3rem;
       color: #ff6b6b;
-      font-size: 2.5rem;
-      margin-bottom: 0.5rem;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
     }
 
-    h2 {
-      color: #555;
-      font-size: 1.2rem;
-      margin-top: 0;
+    header p {
+      font-size: 1.3rem;
+      color: #666;
     }
 
-    .flowers {
-      margin: 1rem auto;
-      width: 80%;
-      max-width: 400px;
+    /* Heart Animation */
+    .heart {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 50px;
+      animation: heartbeat 1.5s infinite;
+    }
+
+    @keyframes heartbeat {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+
+    /* Flowers Container */
+    .flower-container {
       position: relative;
+      margin: 60px 0;
+      width: 100%;
+      max-width: 400px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
     }
 
     .flower {
-      display: inline-block;
-      margin: 0.3rem;
+      width: 80px;
+      height: 80px;
+      background: radial-gradient(circle, #ffeb3b 60%, #795548 61%);
+      border-radius: 50%;
+      position: relative;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      animation: float 6s ease-in-out infinite;
     }
 
-    .flower img {
-      width: 60px;
-      height: auto;
-    }
-
-    .heart {
+    .flower::before, .flower::after {
+      content: '';
       position: absolute;
-      top: 10px;
-      right: 10px;
-      width: 40px;
-      animation: pulse 1.5s infinite;
+      background-color: #4caf50;
+      width: 10px;
+      height: 100px;
+      bottom: -100px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 5px;
     }
 
-    @keyframes pulse {
-      0% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.2); opacity: 0.7; }
-      100% { transform: scale(1); opacity: 1; }
+    .flower::after {
+      width: 15px;
+      height: 15px;
+      bottom: -110px;
+      background-color: #388e3c;
+      border-radius: 50%;
     }
 
-    .message-container {
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    /* Message Card */
+    .message-card {
       background-color: #fff;
-      margin: 1rem;
-      padding: 2rem;
+      padding: 30px 20px;
+      margin: 20px;
       border-radius: 15px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      max-width: 500px;
+      width: 90%;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      text-align: center;
+      animation: fadeIn 2s ease-in;
     }
 
-    .message-container p {
-      font-size: 1.1rem;
-      line-height: 1.6;
+    .message-card p {
+      font-size: 1.2rem;
       color: #444;
+      margin-bottom: 15px;
+    }
+
+    .signature {
+      margin-top: 20px;
+      font-family: 'Pacifico', cursive;
+      color: #ff6b6b;
+      font-size: 1.5rem;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     footer {
       margin-top: auto;
-      padding: 1rem;
       font-size: 0.9rem;
       color: #aaa;
+      padding: 10px;
     }
   </style>
 </head>
+
 <body>
 
-<header>
-  <h1>Para Dome</h1>
-  <h2>21 de Marzo</h2>
-</header>
+  <header>
+    <h1>Para Dome</h1>
+    <p>21 de Marzo</p>
+  </header>
 
-<div class="flowers">
-  <img class="heart" src="https://cdn-icons-png.flaticon.com/512/833/833472.png" alt="Corazón">
+  <img class="heart" src="https://cdn-icons-png.flaticon.com/512/833/833472.png" alt="Corazón latiendo">
 
-  <!-- Ramo de girasoles (aquí puedes agregar más si quieres) -->
-  <div class="flower"><img src="https://cdn-icons-png.flaticon.com/512/2909/2909783.png" alt="Girasol"></div>
-  <div class="flower"><img src="https://cdn-icons-png.flaticon.com/512/2909/2909783.png" alt="Girasol"></div>
-  <div class="flower"><img src="https://cdn-icons-png.flaticon.com/512/2909/2909783.png" alt="Girasol"></div>
-  <div class="flower"><img src="https://cdn-icons-png.flaticon.com/512/2909/2909783.png" alt="Girasol"></div>
-</div>
+  <section class="flower-container">
+    <!-- Puedes duplicar la flor para crear más -->
+    <div class="flower" style="animation-delay: 0s;"></div>
+    <div class="flower" style="animation-delay: 0.5s;"></div>
+    <div class="flower" style="animation-delay: 1s;"></div>
+    <div class="flower" style="animation-delay: 1.5s;"></div>
+    <div class="flower" style="animation-delay: 2s;"></div>
+    <div class="flower" style="animation-delay: 2.5s;"></div>
+  </section>
 
-<div class="message-container">
-  <p><strong>Querida Dome,</strong></p>
-  <p>Un ramo de girasoles para celebrar el inicio de la primavera, tan radiantes como tú.<br>
-  Flores para mi flor favorita, porque iluminas mis días con tu sonrisa.</p>
-</div>
+  <div class="message-card">
+    <p><strong>Querida Dome,</strong></p>
+    <p>Un ramo de girasoles para celebrar el inicio de la primavera, tan radiantes como tú.</p>
+    <p>Flores para mi flor favorita, porque iluminas mis días con tu sonrisa.</p>
+    <div class="signature">Con cariño, Esteban</div>
+  </div>
 
-<footer>
-  esteban-mrh.github.io
-</footer>
+  <footer>
+    esteban-mrh.github.io
+  </footer>
 
 </body>
-    </html>
+  </html>

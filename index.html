@@ -43,8 +43,9 @@
 
     .bouquet-container {
       position: relative;
-      width: 400px;
-      height: 600px;
+      width: 90%;
+      max-width: 400px;
+      height: auto;
       margin-top: 20px;
     }
 
@@ -83,6 +84,15 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
+    @keyframes sway {
+      0%, 100% { transform: rotate(0); }
+      50% { transform: rotate(5deg); }
+    }
+
+    .sunflower {
+      animation: sway 3s ease-in-out infinite;
+    }
+
   </style>
 </head>
 <body>
@@ -93,7 +103,9 @@
   </header>
 
   <div class="bouquet-container">
-    <svg viewBox="0 0 400 600" width="400" height="600">
+    <svg viewBox="0 0 400 650" width="100%" height="auto" aria-labelledby="bouquetTitle bouquetDesc">
+      <title id="bouquetTitle">Ramo de Girasoles</title>
+      <desc id="bouquetDesc">Un hermoso ramo de girasoles con tallos y hojas.</desc>
       
       <!-- Tallos -->
       <g stroke="#388e3c" stroke-width="8" fill="none">
@@ -114,7 +126,6 @@
 
       <!-- Girasol 1 -->
       <g class="sunflower" transform="translate(200,300)">
-        <!-- Pétalos traseros -->
         <g>
           <circle r="70" fill="#ffeb3b" />
           <g>
@@ -126,14 +137,12 @@
             <ellipse rx="20" ry="60" fill="#fbc02d" transform="rotate(150) translate(0,-90)" />
           </g>
         </g>
-        <!-- Centro -->
         <circle r="40" fill="#5d4037" />
-        <!-- Detalles del centro -->
         <circle r="5" fill="#3e2723" />
       </g>
 
       <!-- Girasol 2 -->
-      <g class="sunflower" transform="translate(150,340) scale(0.9)">
+      <g class="sunflower" transform="translate(150,360) scale(0.9)">
         <g>
           <circle r="70" fill="#ffeb3b" />
           <g>
@@ -150,7 +159,7 @@
       </g>
 
       <!-- Girasol 3 -->
-      <g class="sunflower" transform="translate(250,340) scale(0.85)">
+      <g class="sunflower" transform="translate(250,360) scale(0.85)">
         <g>
           <circle r="70" fill="#ffeb3b" />
           <g>
@@ -198,4 +207,4 @@
     });
   </script>
 </body>
-              </html>
+          </html>

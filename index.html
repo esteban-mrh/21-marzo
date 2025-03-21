@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ramo de Girasoles para Dome</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f9f8f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+            text-align: center;
+        }
+        
+        .header {
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        
+        h1 {
+            color: #ff6b6b;
+            font-size: 2.5rem;
+            margin-bottom: 0;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        
+        .date {
+            color: #5d5d5d;
+            font-size: 1.2rem;
+            margin-top: 5px;
+        }
+        
+        .bouquet-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            height: 500px;
+            margin: 20px auto;
+        }
+        
+        .heart {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            animation: pulse 1.5s infinite;
+            z-index: 10;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        .vase {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 140px;
+            height: 180px;
+            background-color: #91cdf2;
+            border-radius: 0 0 70px 70px;
+            z-index: 1;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .vase:before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -10px;
+            right: -10px;
+            height: 40px;
+            background-color: #91cdf2;
+            border-radius: 50% 50% 0 0;
+        }
+        
+        .sunflower {
+            position: absolute;
+            width: 90px;
+            height: 90px;
+            z-index: 2;
+        }
+        
+        .stem {
+            position: absolute;
+            width: 8px;
+            height: 180px;
+            background-color: #5a9e45;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+        }
+        
+        .center {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background-color: #5e3915;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 3;
+        }
+        
+        .petals {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+        
+        .petal {
+            position: absolute;
+            width: 25px;
+            height: 40px;
+            background-color: #ffc830;
+            border-radius: 50% 50% 50% 50%;
+            top: 50%;
+            left: 50%;
+            transform-origin: center bottom;
+            z-index: 2;
+        }
+        
+        .leaf {
+            position: absolute;
+            width: 30px;
+            height: 15px;
+            background-color: #5a9e45;
+            border-radius: 50% 50% 50% 50%;
+            z-index: 1;
+        }
+        
+        .message {
+            margin-top: 20px;
+            padding: 20px;
+            max-width: 600px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        p {
+            color: #5d5d5d;
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+        
+        .signature {
+            margin-top: 15px;
+            font-style: italic;
+            color: #ff6b6b;
+        }
+        
+        .falling-petals {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .petal-falling {
+            position: absolute;
+            width: 15px;
+            height: 25px;
+            background-color: #ffc830;
+            border-radius: 50%;
+            opacity: 0.8;
+            pointer-events: none;
+            animation: falling linear infinite;
+        }
+        
+        @keyframes falling {
+            0% {
+                transform: translateY(-5%) rotate(0deg);
+            }
+            100% {
+                transform: translateY(1000%) rotate(360deg);
+            }
+        }
+        
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .bouquet-container {
+                height: 400px;
+            }
+            
+            .vase {
+                width: 120px;
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Para Dome</h1>
+        <div class="date">21 de Marzo</div>
+    </div>
+    
+    <div class="bouquet-container">
+        <svg class="heart" viewBox="0 0 24 24" fill="#ff6b6b">
+            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+        </svg>
+        
+        <div class="vase"></div>
+        
+        <div class="falling-petals" id="fallingPetals"></div>
+        
+        <div id="sunflowers-container"></div>
+    </div>
+    
+    <div class="message">
+        <p>Querida Dome,</p>
+        <p>Un ramo de girasoles para celebrar el inicio de la primavera, tan radiantes como tú. Flores para mi flor favorita, porque iluminas mis días con tu sonrisa.</p>
+        <p>Feliz Inicio de Primavera, 21 de Marzo ❤️</p>
+        <p class="signature">Con todo mi amor</p>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Create sunflowers
+            const container = document.getElementById('sunflowers-container');
+            
+            // Define positions for each sunflower
+            const positions = [
+                { x: -80, y: 320, size: 0.9, rotation: -15 },
+                { x: -40, y: 340, size: 1.0, rotation: -5 },
+                { x: 0, y: 360, size: 1.1, rotation: 0 },
+                { x: 40, y: 340, size: 1.0, rotation: 5 },
+                { x: 80, y: 320, size: 0.9, rotation: 15 },
+                { x: -60, y: 280, size: 0.85, rotation: -10 },
+                { x: 0, y: 300, size: 0.95, rotation: 0 },
+                { x: 60, y: 280, size: 0.85, rotation: 10 }
+            ];
+            
+            // Create each sunflower
+            positions.forEach(pos => {
+                createSunflower(pos.x, pos.y, pos.size, pos.rotation);
+            });
+            
+            // Create falling petals
+            createFallingPetals();
+            
+            // Add a gentle sway animation to the bouquet
+            const sunflowersContainer = document.getElementById('sunflowers-container');
+            let angle = 0;
+            let direction = 1;
+            
+            setInterval(() => {
+                angle += 0.05 * direction;
+                if (Math.abs(angle) > 2) {
+                    direction *= -1;
+                }
+                sunflowersContainer.style.transform = `rotate(${angle}deg)`;
+            }, 50);
+            
+            // Functions
+            function createSunflower(xPos, yPos, size, rotation) {
+                // Create main container
+                const sunflowerGroup = document.createElement('div');
+                sunflowerGroup.style.position = 'absolute';
+                sunflowerGroup.style.left = `calc(50% + ${xPos}px)`;
+                sunflowerGroup.style.top = `${yPos}px`;
+                sunflowerGroup.style.transform = `scale(${size}) rotate(${rotation}deg)`;
+                sunflowerGroup.style.transformOrigin = 'bottom center';
+                
+                // Create stem
+                const stem = document.createElement('div');
+                stem.className = 'stem';
+                sunflowerGroup.appendChild(stem);
+                
+                // Add leaves to stem
+                const leaf1 = document.createElement('div');
+                leaf1.className = 'leaf';
+                leaf1.style.bottom = '100px';
+                leaf1.style.left = 'calc(50% - 30px)';
+                leaf1.style.transform = 'rotate(-20deg)';
+                sunflowerGroup.appendChild(leaf1);
+                
+                const leaf2 = document.createElement('div');
+                leaf2.className = 'leaf';
+                leaf2.style.bottom = '60px';
+                leaf2.style.left = 'calc(50% + 5px)';
+                leaf2.style.transform = 'rotate(20deg) scaleX(-1)';
+                sunflowerGroup.appendChild(leaf2);
+                
+                // Create flower
+                const flower = document.createElement('div');
+                flower.className = 'sunflower';
+                flower.style.bottom = '180px';
+                flower.style.left = '50%';
+                flower.style.transform = 'translateX(-50%)';
+                
+                // Create petals group
+                const petalsGroup = document.createElement('div');
+                petalsGroup.className = 'petals';
+                
+                // Create petals
+                for (let i = 0; i < 18; i++) {
+                    const petal = document.createElement('div');
+                    petal.className = 'petal';
+                    const angle = (i * 20) % 360;
+                    petal.style.transform = `rotate(${angle}deg) translateY(-30px)`;
+                    petalsGroup.appendChild(petal);
+                }
+                
+                flower.appendChild(petalsGroup);
+                
+                // Create center of flower
+                const center = document.createElement('div');
+                center.className = 'center';
+                flower.appendChild(center);
+                
+                sunflowerGroup.appendChild(flower);
+                container.appendChild(sunflowerGroup);
+            }
+            
+            function createFallingPetals() {
+                const petalsContainer = document.getElementById('fallingPetals');
+                
+                for (let i = 0; i < 15; i++) {
+                    const petal = document.createElement('div');
+                    petal.className = 'petal-falling';
+                    
+                    // Random properties
+                    const left = Math.random() * 100;
+                    const delay = Math.random() * 5;
+                    const duration = Math.random() * 10 + 5;
+                    const size = Math.random() * 0.5 + 0.5;
+                    
+                    petal.style.left = `${left}%`;
+                    petal.style.animationDelay = `${delay}s`;
+                    petal.style.animationDuration = `${duration}s`;
+                    petal.style.transform = `scale(${size})`;
+                    
+                    petalsContainer.appendChild(petal);
+                }
+            }
+        });
+    </script>
+</body>
+</html>

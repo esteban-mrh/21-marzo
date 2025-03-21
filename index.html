@@ -10,90 +10,8 @@
 
   <!-- GSAP for animations -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<link href="style.css" rel="stylesheet" />
 
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background: linear-gradient(to bottom, #fff8e1, #ffe0b2);
-      font-family: 'Open Sans', sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
-
-    header {
-      text-align: center;
-      margin-top: 40px;
-    }
-
-    header h1 {
-      font-family: 'Pacifico', cursive;
-      color: #ff6f61;
-      font-size: 3rem;
-    }
-
-    header p {
-      color: #444;
-      font-size: 1.2rem;
-      margin-top: 10px;
-    }
-
-    .bouquet-container {
-      position: relative;
-      width: 90%;
-      max-width: 400px;
-      height: auto;
-      margin-top: 20px;
-    }
-
-    .message-card {
-      background: #ffffff;
-      margin: 40px 20px;
-      padding: 30px 20px;
-      border-radius: 15px;
-      max-width: 500px;
-      width: 90%;
-      text-align: center;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-      animation: fadeIn 2s ease-in;
-    }
-
-    .message-card p {
-      font-size: 1.2rem;
-      margin-bottom: 15px;
-      color: #444;
-    }
-
-    .signature {
-      font-family: 'Pacifico', cursive;
-      font-size: 1.5rem;
-      color: #ff6f61;
-    }
-
-    footer {
-      font-size: 0.9rem;
-      color: #aaa;
-      padding: 10px;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes sway {
-      0%, 100% { transform: rotate(0); }
-      50% { transform: rotate(5deg); }
-    }
-
-    .sunflower {
-      animation: sway 3s ease-in-out infinite;
-    }
-
-  </style>
 </head>
 <body>
 
@@ -195,16 +113,7 @@
     esteban-mrh .github.io
   </footer>
 
-  <script>
-    // Animación de los girasoles como si el viento soplara
-    gsap.to(".sunflower", {
-      rotate: 3,
-      transformOrigin: "50% 50%",
-      duration: 4,
-      repeat: -1,
-      yoyo: true,
-      ease: "sine.inOut"
-    });
+  <script src="script.js">
   </script>
 </body>
               </html>

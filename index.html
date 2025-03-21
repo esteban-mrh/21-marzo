@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ramo de Girasoles para Dome</title>
-
+  
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
 
@@ -15,7 +15,7 @@
     body {
       margin: 0;
       padding: 0;
-      background: linear-gradient(to bottom, #fffaf0, #ffe4e1);
+      background: linear-gradient(to bottom, #fff8e1, #ffe0b2);
       font-family: 'Open Sans', sans-serif;
       display: flex;
       flex-direction: column;
@@ -31,55 +31,25 @@
 
     header h1 {
       font-family: 'Pacifico', cursive;
-      color: #ff6b6b;
+      color: #ff6f61;
       font-size: 3rem;
     }
 
     header p {
-      color: #555;
+      color: #444;
       font-size: 1.2rem;
-      margin-top: 5px;
+      margin-top: 10px;
     }
 
-    /* Heart */
-    .heart {
-      position: absolute;
-      top: 30px;
-      right: 30px;
-      width: 50px;
-      z-index: 10;
-    }
-
-    /* Bouquet Wrapper */
-    .bouquet-wrapper {
+    .bouquet-container {
       position: relative;
       width: 400px;
-      height: 500px;
-      margin-top: 40px;
+      height: 600px;
+      margin-top: 20px;
     }
 
-    .ribbon {
-      position: absolute;
-      bottom: 50px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 100px;
-      height: 40px;
-      background: #ff6b6b;
-      border-radius: 50px 50px 0 0;
-      z-index: 5;
-    }
-
-    svg {
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-
-    /* Message Card */
     .message-card {
-      background: #fff;
+      background: #ffffff;
       margin: 40px 20px;
       padding: 30px 20px;
       border-radius: 15px;
@@ -99,12 +69,7 @@
     .signature {
       font-family: 'Pacifico', cursive;
       font-size: 1.5rem;
-      color: #ff6b6b;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+      color: #ff6f61;
     }
 
     footer {
@@ -112,92 +77,99 @@
       color: #aaa;
       padding: 10px;
     }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
   </style>
 </head>
-
 <body>
 
   <header>
     <h1>Para Dome</h1>
-    <p>Un ramo de girasoles solo para ti</p>
+    <p>Un ramo de girasoles hecho con cariño</p>
   </header>
 
-  <img class="heart" src="https://cdn-icons-png.flaticon.com/512/833/833472.png" alt="Corazón" id="heart"/>
-
-  <div class="bouquet-wrapper">
-    <!-- Ramo de girasoles -->
-    <div class="ribbon"></div>
-
-    <svg width="400" height="500" viewBox="0 0 400 500">
-      <!-- Tallos -->
-      <line x1="200" y1="250" x2="180" y2="500" stroke="#388e3c" stroke-width="6" />
-      <line x1="200" y1="250" x2="220" y2="500" stroke="#388e3c" stroke-width="6" />
-      <line x1="160" y1="300" x2="190" y2="500" stroke="#388e3c" stroke-width="6" />
-      <line x1="240" y1="300" x2="210" y2="500" stroke="#388e3c" stroke-width="6" />
+  <div class="bouquet-container">
+    <svg viewBox="0 0 400 600" width="400" height="600">
       
+      <!-- Tallos -->
+      <g stroke="#388e3c" stroke-width="8" fill="none">
+        <line x1="200" y1="300" x2="180" y2="580" />
+        <line x1="200" y1="300" x2="220" y2="580" />
+        <line x1="160" y1="340" x2="150" y2="580" />
+        <line x1="240" y1="340" x2="250" y2="580" />
+        <line x1="200" y1="300" x2="200" y2="580" />
+      </g>
+
+      <!-- Hojas -->
+      <g fill="#4caf50">
+        <ellipse cx="180" cy="400" rx="30" ry="15" transform="rotate(-30 180 400)" />
+        <ellipse cx="220" cy="420" rx="30" ry="15" transform="rotate(30 220 420)" />
+        <ellipse cx="150" cy="450" rx="25" ry="12" transform="rotate(-40 150 450)" />
+        <ellipse cx="250" cy="460" rx="25" ry="12" transform="rotate(40 250 460)" />
+      </g>
+
       <!-- Girasol 1 -->
-      <g class="sunflower" transform="translate(200,250)">
-        <circle r="60" fill="#6D4C41" />
-        <!-- Pétalos capa trasera -->
+      <g class="sunflower" transform="translate(200,300)">
+        <!-- Pétalos traseros -->
         <g>
-          <ellipse rx="15" ry="50" fill="#FFEB3B" transform="rotate(0) translate(0,-80)" />
-          <ellipse rx="15" ry="50" fill="#FFEB3B" transform="rotate(30) translate(0,-80)" />
-          <ellipse rx="15" ry="50" fill="#FFEB3B" transform="rotate(60) translate(0,-80)" />
-          <ellipse rx="15" ry="50" fill="#FFEB3B" transform="rotate(90) translate(0,-80)" />
-          <ellipse rx="15" ry="50" fill="#FFEB3B" transform="rotate(120) translate(0,-80)" />
-          <ellipse rx="15" ry="50" fill="#FFEB3B" transform="rotate(150) translate(0,-80)" />
+          <circle r="70" fill="#ffeb3b" />
+          <g>
+            <ellipse rx="20" ry="60" fill="#fbc02d" transform="rotate(0) translate(0,-90)" />
+            <ellipse rx="20" ry="60" fill="#fbc02d" transform="rotate(30) translate(0,-90)" />
+            <ellipse rx="20" ry="60" fill="#fbc02d" transform="rotate(60) translate(0,-90)" />
+            <ellipse rx="20" ry="60" fill="#fbc02d" transform="rotate(90) translate(0,-90)" />
+            <ellipse rx="20" ry="60" fill="#fbc02d" transform="rotate(120) translate(0,-90)" />
+            <ellipse rx="20" ry="60" fill="#fbc02d" transform="rotate(150) translate(0,-90)" />
+          </g>
         </g>
-        <!-- Pétalos capa delantera -->
-        <g>
-          <ellipse rx="12" ry="40" fill="#FDD835" transform="rotate(15) translate(0,-70)" />
-          <ellipse rx="12" ry="40" fill="#FDD835" transform="rotate(45) translate(0,-70)" />
-          <ellipse rx="12" ry="40" fill="#FDD835" transform="rotate(75) translate(0,-70)" />
-          <ellipse rx="12" ry="40" fill="#FDD835" transform="rotate(105) translate(0,-70)" />
-          <ellipse rx="12" ry="40" fill="#FDD835" transform="rotate(135) translate(0,-70)" />
-          <ellipse rx="12" ry="40" fill="#FDD835" transform="rotate(165) translate(0,-70)" />
-        </g>
+        <!-- Centro -->
+        <circle r="40" fill="#5d4037" />
+        <!-- Detalles del centro -->
+        <circle r="5" fill="#3e2723" />
       </g>
 
       <!-- Girasol 2 -->
-      <g class="sunflower" transform="translate(160,300) scale(0.8)">
-        <circle r="60" fill="#6D4C41" />
+      <g class="sunflower" transform="translate(150,340) scale(0.9)">
         <g>
-          <ellipse rx="15" ry="50" fill="#FFEB3B" transform="rotate(0) translate(0,-80)" />
-          <ellipse rx="15" ry="50" fill="#FFEB3B" transform="rotate(30) translate(0,-80)" />
-          <ellipse rx="15" ry="50" fill="#FFEB3B" transform="rotate(60) translate(0,-80)" />
-          <ellipse rx="15" ry="50" fill="#FFEB3B" transform="rotate(90) translate(0,-80)" />
-          <ellipse rx="15" ry="50" fill="#FFEB3B" transform="rotate(120) translate(0,-80)" />
-          <ellipse rx="15" ry="50" fill="#FFEB3B" transform="rotate(150) translate(0,-80)" />
+          <circle r="70" fill="#ffeb3b" />
+          <g>
+            <ellipse rx="20" ry="60" fill="#fbc02d" transform="rotate(0) translate(0,-90)" />
+            <ellipse rx="20" ry="60" fill="#fbc02d" transform="rotate(30) translate(0,-90)" />
+            <ellipse rx="20" ry="60" fill="#fbc02d" transform="rotate(60) translate(0,-90)" />
+            <ellipse rx="20" ry="60" fill="#fbc02d" transform="rotate(90) translate(0,-90)" />
+            <ellipse rx="20" ry="60" fill="#fbc02d" transform="rotate(120) translate(0,-90)" />
+            <ellipse rx="20" ry="60" fill="#fbc02d" transform="rotate(150) translate(0,-90)" />
+          </g>
         </g>
-        <g>
-          <ellipse rx="12" ry="40" fill="#FDD835" transform="rotate(15) translate(0,-70)" />
-          <ellipse rx="12" ry="40" fill="#FDD835" transform="rotate(45) translate(0,-70)" />
-          <ellipse rx="12" ry="40" fill="#FDD835" transform="rotate(75) translate(0,-70)" />
-          <ellipse rx="12" ry="40" fill="#FDD835" transform="rotate(105) translate(0,-70)" />
-          <ellipse rx="12" ry="40" fill="#FDD835" transform="rotate(135) translate(0,-70)" />
-          <ellipse rx="12" ry="40" fill="#FDD835" transform="rotate(165) translate(0,-70)" />
-        </g>
+        <circle r="40" fill="#5d4037" />
+        <circle r="5" fill="#3e2723" />
       </g>
 
       <!-- Girasol 3 -->
-      <g class="sunflower" transform="translate(240,300) scale(0.9)">
-        <circle r="60" fill="#6D4C41" />
+      <g class="sunflower" transform="translate(250,340) scale(0.85)">
         <g>
-          <ellipse rx="15" ry="50" fill="#FFEB3B" transform="rotate(0) translate(0,-80)" />
-          <ellipse rx="15" ry="50" fill="#FFEB3B" transform="rotate(30) translate(0,-80)" />
-          <ellipse rx="15" ry="50" fill="#FFEB3B" transform="rotate(60) translate(0,-80)" />
-          <ellipse rx="15" ry="50" fill="#FFEB3B" transform="rotate(90) translate(0,-80)" />
-          <ellipse rx="15" ry="50" fill="#FFEB3B" transform="rotate(120) translate(0,-80)" />
-          <ellipse rx="15" ry="50" fill="#FFEB3B" transform="rotate(150) translate(0,-80)" />
+          <circle r="70" fill="#ffeb3b" />
+          <g>
+            <ellipse rx="20" ry="60" fill="#fbc02d" transform="rotate(0) translate(0,-90)" />
+            <ellipse rx="20" ry="60" fill="#fbc02d" transform="rotate(30) translate(0,-90)" />
+            <ellipse rx="20" ry="60" fill="#fbc02d" transform="rotate(60) translate(0,-90)" />
+            <ellipse rx="20" ry="60" fill="#fbc02d" transform="rotate(90) translate(0,-90)" />
+            <ellipse rx="20" ry="60" fill="#fbc02d" transform="rotate(120) translate(0,-90)" />
+            <ellipse rx="20" ry="60" fill="#fbc02d" transform="rotate(150) translate(0,-90)" />
+          </g>
         </g>
-        <g>
-          <ellipse rx="12" ry="40" fill="#FDD835" transform="rotate(15) translate(0,-70)" />
-          <ellipse rx="12" ry="40" fill="#FDD835" transform="rotate(45) translate(0,-70)" />
-          <ellipse rx="12" ry="40" fill="#FDD835" transform="rotate(75) translate(0,-70)" />
-          <ellipse rx="12" ry="40" fill="#FDD835" transform="rotate(105) translate(0,-70)" />
-          <ellipse rx="12" ry="40" fill="#FDD835" transform="rotate(135) translate(0,-70)" />
-          <ellipse rx="12" ry="40" fill="#FDD835" transform="rotate(165) translate(0,-70)" />
-        </g>
+        <circle r="40" fill="#5d4037" />
+        <circle r="5" fill="#3e2723" />
+      </g>
+
+      <!-- Lazo del ramo -->
+      <g>
+        <ellipse cx="200" cy="580" rx="60" ry="20" fill="#ff6f61" />
+        <path d="M 140 580 Q 200 620 260 580 Q 200 600 140 580" fill="#ff8a65" />
       </g>
 
     </svg>
@@ -205,8 +177,8 @@
 
   <div class="message-card">
     <p><strong>Querida Dome,</strong></p>
-    <p>Hoy florecen los girasoles para ti, porque tú eres el sol que ilumina mis días.</p>
-    <p>Con amor, el ramo más especial.</p>
+    <p>Este ramo de girasoles es para ti, porque eres el sol que ilumina mis días.</p>
+    <p>Espero te saque una sonrisa.</p>
     <div class="signature">Esteban</div>
   </div>
 
@@ -215,25 +187,15 @@
   </footer>
 
   <script>
-    // Heart beat animation
-    gsap.to("#heart", {
-      scale: 1.2,
-      duration: 0.6,
-      repeat: -1,
-      yoyo: true,
-      ease: "power1.inOut"
-    });
-
-    // Wind movement to sunflowers
+    // Movimiento de los girasoles como si el viento soplara
     gsap.to(".sunflower", {
-      rotate: 5,
+      rotate: 3,
       transformOrigin: "50% 50%",
-      duration: 3,
+      duration: 4,
       repeat: -1,
       yoyo: true,
       ease: "sine.inOut"
     });
   </script>
-
 </body>
-            </html>
+              </html>
